@@ -1,0 +1,119 @@
+#Converting properties to yml
+#We can access multiple application in one file that is yml
+server:
+  port: '8090'
+
+welcome:
+  message: Spring Boot
+
+#---
+#spring:
+#  profiles:
+#    active: prod # For Accessing particular DataBase(prod means jsp-prod database is active)
+#                  # The following 1 profile is active: "prd"
+
+#---
+#spring:
+#  profiles:
+#    active: qa # For Accessing particular DataBase(prod means jsp-prod database is active)
+#               #The following 1 profile is active: "qa"
+#
+
+---
+spring:
+  profiles:
+    active: qc # For Accessing particular DataBase(prod means jsp-prod database is active)
+    #The following 1 profile is active: "qc"
+
+
+
+---
+spring:
+#  profiles: prod
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    username: root
+
+    url: jdbc:mysql://localhost:3306/jsp-prod
+
+    name: test
+
+    password: '805026'
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+    hibernate:
+      ddl-auto: update
+
+      show-sql: true
+
+---
+spring:
+#  profiles: qa
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    username: root
+
+    url: jdbc:mysql://localhost:3306/jsp-qa
+
+    name: test
+
+    password: '805026'
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+    hibernate:
+      ddl-auto: update
+
+      show-sql: true
+
+---
+spring:
+#  profiles: qc
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    username: root
+
+    url: jdbc:mysql://localhost:3306/jsp-qc
+
+    name: test
+
+    password: '805026'
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+    hibernate:
+      ddl-auto: update
+
+      show-sql: true
+
+
+      management:
+        endpoints:
+          web:
+            exposure:
+              include: "*"
+
+
+
+
+
+
+
+
+
+
